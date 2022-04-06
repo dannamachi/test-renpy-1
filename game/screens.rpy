@@ -313,6 +313,9 @@ screen navigation():
 
         textbutton _("Preferences") action ShowMenu("preferences")
 
+        # add button here to show minigame
+        textbutton "Magic Show" action Show("minigame")
+
         if _in_replay:
 
             textbutton _("End Replay") action EndReplay(confirm=True)
