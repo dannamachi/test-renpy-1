@@ -2,6 +2,6 @@
 ## Define all images
 ################################################################################
 
-init python:
+init -1 python:
     images = {}
     images.player = 'images/sprites/sprite.png'
