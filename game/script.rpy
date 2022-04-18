@@ -8,6 +8,7 @@ define e = Character("Eileen")
 # game flow
 default gFlow = True
 default gamedata = GameData()
+default assets = AssetProvider()
 
 
 # The game starts here.

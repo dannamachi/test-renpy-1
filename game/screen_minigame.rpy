@@ -7,7 +7,11 @@ screen minigame():
     frame:
         style "minigame_frame"
 
-    add images.player xalign 0.0 yalign 0.0
+    # cud
+    default pong = ClassicAnimator(assets.anima_1_right)
+    add pong
+
+    # add images.player xalign 0.0 yalign 0.0
 
     vbox:
         textbutton "Magic Close" action Hide('minigame')
