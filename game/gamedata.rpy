@@ -51,6 +51,12 @@ init -10 python:
             self.critical = 0.1
             self.a_index = 0
 
+            # anima pos
+            self.posx = 100
+            self.posy = 100
+            self.moveSpeed = 200
+            self.isMoving = []
+
         def getAnima(self):
             return Image(self.animaLoop[self.a_index])
 
@@ -80,13 +86,17 @@ init -10 python:
             self.by += self.bdy * speed
 
             # change anima & increment threshold
-            increment = dtime * 1.0
-            self.threshold += increment
-            if self.threshold >= self.critical:
+            if len(self.isMoving) > 0:
+                increment = dtime * 1.0
+                self.threshold += increment
+                if self.threshold >= self.critical:
+                    self.threshold = 0.0
+                    self.a_index += 1
+                    if (self.a_index >= len(self.animaLoop)):
+                        self.a_index = 0
+            else:
                 self.threshold = 0.0
-                self.a_index += 1
-                if (self.a_index >= len(self.animaLoop)):
-                    self.a_index = 0
+                self.a_index = 0
 
             # Handle bounces.
 
@@ -109,7 +119,15 @@ init -10 python:
 
             # draw the anima
             anima = renpy.render(self.getAnima(), width, height, st, at)
-            r.blit(anima, (50, 50))
+            r.blit(anima, (self.posx, self.posy))
+
+            # move the anima
+            for direc in self.isMoving:
+                if direc == 'left':
+                    self.posx -= self.moveSpeed * dtime
+                elif direc == 'right':
+                    self.posx += self.moveSpeed * dtime
+                
 
             # # Check for a winner.
             # if self.bx < -50:
@@ -133,7 +151,7 @@ init -10 python:
         # Handles events.
         def event(self, ev, x, y, st):
 
-            # import pygame
+            import pygame
 
             # # Mousebutton down == start the game by setting stuck to
             # # false.
@@ -142,6 +160,31 @@ init -10 python:
 
             #     # Ensure the pong screen updates.
             #     renpy.restart_interaction()
+
+            # moving
+            if ev.type == pygame.KEYDOWN:
+                # moving left
+                if ev.key == pygame.K_LEFT:
+                    if not 'left' in self.isMoving:
+                        self.isMoving.append('left')
+                    renpy.restart_interaction()
+                # moving right
+                elif ev.key == pygame.K_RIGHT:
+                    if not 'right' in self.isMoving:
+                        self.isMoving.append('right')
+                    renpy.restart_interaction()
+            # not moving
+            elif ev.type == pygame.KEYUP:
+                # release left
+                if ev.key == pygame.K_LEFT:
+                    if 'left' in self.isMoving:
+                        self.isMoving.remove('left')
+                    renpy.restart_interaction()
+                # release right
+                elif ev.key == pygame.K_RIGHT:
+                    if 'right' in self.isMoving:
+                        self.isMoving.remove('right')
+                    renpy.restart_interaction()
 
             raise renpy.IgnoreEvent()
 
