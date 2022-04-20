@@ -25,9 +25,9 @@ screen navigation():
 
             textbutton _("History") action ShowMenu("history")
 
-            textbutton _("Save") action ShowMenu("save")
+            textbutton _("Save") action [ShowMenu("save"), FilePage(1)]
 
-        textbutton _("Load") action ShowMenu("load")
+        textbutton _("Load") action [ShowMenu("load"), FilePage(1)]
 
         textbutton _("Preferences") action ShowMenu("preferences")
 
@@ -217,7 +217,7 @@ screen quick_menu():
             textbutton _("History") action ShowMenu('history')
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action ShowMenu('save')
+            textbutton _("Save") action [ShowMenu('save'), FilePage(1)]
             textbutton _("Q.Save") action QuickSave()
             textbutton _("Q.Load") action QuickLoad()
             textbutton _("Prefs") action ShowMenu('preferences')
