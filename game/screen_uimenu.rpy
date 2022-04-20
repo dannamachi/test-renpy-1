@@ -40,7 +40,7 @@ screen navigation():
         # textbutton "Magicalisarys" action Show("save_custom_1")
 
         # test button to run autosave
-        textbutton "RUN Autosave" action Function(run_autosave)
+        # textbutton "RUN Autosave" action Function(run_autosave)
 
         if _in_replay:
 
@@ -221,6 +221,8 @@ screen quick_menu():
             textbutton _("Q.Save") action QuickSave()
             textbutton _("Q.Load") action QuickLoad()
             textbutton _("Prefs") action ShowMenu('preferences')
+        
+            textbutton "RUN AUTO" action Function(run_autosave)
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
