@@ -25,9 +25,9 @@ screen navigation():
 
             textbutton _("History") action ShowMenu("history")
 
-            textbutton _("Save") action [ShowMenu("save"), FilePage(1)]
+            textbutton _("Save") action [ShowMenu("save"), FilePage(1)] selected isThisScreen('save')
 
-        textbutton _("Load") action [ShowMenu("load"), FilePage(1)]
+        textbutton _("Load") action [ShowMenu("load"), FilePage(1)] selected isThisScreen('load')
 
         textbutton _("Preferences") action ShowMenu("preferences")
 
@@ -36,7 +36,7 @@ screen navigation():
 
         # add button here to show custom autosave page
         # set page to custom prefix magic page number
-        textbutton "Magicalisarys" action [Show("save_custom_1"), FilePage(numbers.slot_prefix)]
+        textbutton "Magicalisarys" action [Show("save_custom_1"), FilePage(numbers.slot_prefix)] selected False
         # textbutton "Magicalisarys" action Show("save_custom_1")
 
         # test button to run autosave
@@ -217,7 +217,7 @@ screen quick_menu():
             textbutton _("History") action ShowMenu('history')
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action [ShowMenu('save'), FilePage(1)]
+            textbutton _("Save") action [ShowMenu('save'), FilePage(1)] selected False
             textbutton _("Q.Save") action QuickSave()
             textbutton _("Q.Load") action QuickLoad()
             textbutton _("Prefs") action ShowMenu('preferences')

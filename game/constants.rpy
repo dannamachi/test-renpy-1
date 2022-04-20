@@ -15,3 +15,8 @@ init -5 python:
 
     def run_autosave():
         renpy.save(str(numbers.slot_prefix) + "-1", "")
+
+    def isThisScreen(name):
+        if renpy.get_screen(name):
+            return True
+        return False
