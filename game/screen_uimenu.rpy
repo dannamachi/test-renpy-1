@@ -90,7 +90,10 @@ screen main_menu():
 
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
-    use navigation
+    # use navigation
+
+    # custom menu
+    use pizza
 
     if gui.show_name:
 

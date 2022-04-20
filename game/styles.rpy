@@ -1,2 +1,40 @@
 style minigame_frame:
     background 'images/backgrounds/minigame.png'
+
+style pizza_button:
+    background Solid("fff", xfill=True, yfill=True)
+    size_group 'pizza'
+
+style pizza_button_text:
+    line_spacing 2
+    underline True
+
+transform pizza_button_1:
+    #rotate_pad False
+    yoffset 150
+    xoffset 80
+    rotate 30
+
+transform pizza_button_2:
+    #rotate_pad False
+    yoffset 250
+    xoffset 30
+    rotate 15
+
+transform pizza_button_3:
+    #rotate_pad False
+    yoffset 350
+    xoffset 15
+    rotate 0
+
+transform pizza_button_4:
+    #rotate_pad False
+    yoffset 450
+    xoffset 30
+    rotate -15
+
+transform pizza_button_5:
+    #rotate_pad False
+    yoffset 550
+    xoffset 80
+    rotate -30
