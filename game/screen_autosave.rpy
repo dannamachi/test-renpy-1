@@ -1,5 +1,8 @@
 screen save_custom_1():
 
+    # set filepage when hidden
+    on "hide" action FilePage(1)
+
     ## This ensures that any other menu screen is replaced.
     tag menu
 
