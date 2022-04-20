@@ -10,6 +10,19 @@ default gFlow = True
 default gamedata = GameData()
 default assets = AssetProvider()
 
+# splash screen
+label splashscreen:
+    scene black
+    with Pause(1)
+
+    show text "Mochi presents..." with dissolve
+    with Pause(2)
+
+    hide text with dissolve
+    with Pause(1)
+
+    return
+
 
 # The game starts here.
 
