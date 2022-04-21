@@ -12,6 +12,8 @@ init -5 python:
 
     numbers = {}
     numbers.slot_prefix = 100
+    numbers.screen_width = 1280
+    numbers.screen_height = 720
 
     def run_autosave():
         renpy.save(str(numbers.slot_prefix) + "-1", "")
