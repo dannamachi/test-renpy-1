@@ -1,6 +1,15 @@
 style minigame_frame:
     background 'images/backgrounds/minigame.png'
 
+style phone_frame:
+    align (0.5, 0.4)
+    xsize numbers.phone_width
+    ysize numbers.phone_height
+
+style phone_frame_imagemap:
+    xfill True
+    yfill True
+
 style pizza_button:
     background Solid("fff", xfill=True, yfill=True)
     size_group 'pizza'

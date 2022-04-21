@@ -54,8 +54,8 @@ label start:
         $ gamedata.name = renpy.input('Enter your name, or leave blank for default ^^').strip()
 
         if (gamedata.name == 'exit'):
-            $ gFlow = False
             e "Eh, goodbye then !"
+            return
 
         if len(gamedata.name) == 0:
             $ gamedata.name = 'Stupido'
@@ -66,6 +66,15 @@ label start:
             e "Brilliant ! Welcome to our humble world, [gamedata.name] !"
             e "Hope you enjoy your stay :D"
 
-    # This ends the game.
+        if gamedata.name != 'Stupido':
+            e "Hmmmm... sounds good, let's go !"
+            $ gFlow = False
+        else:
+            e "Hmmmmmmmmm... no, this ain't it."
 
+    call screen magic_phone
+
+    e "And that's it !"
+
+    # This ends the game.
     return
