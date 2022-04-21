@@ -9,6 +9,14 @@ style pizza_button_text:
     line_spacing 2
     underline True
 
+transform widthToZero:
+    xsize numbers.screen_width
+    linear 3.0 xsize 0
+
+transform showFadeIn:
+    alpha 0.0
+    linear 0.5 alpha 1.0
+
 transform pizza_button_1:
     #rotate_pad False
     yoffset 150

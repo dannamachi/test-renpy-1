@@ -82,29 +82,36 @@ screen main_menu():
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add gui.main_menu_background
-
-    ## This empty frame darkens the main menu.
     frame:
-        style "main_menu_frame"
+        # fade to main menu ohoog
+        at showFadeIn
 
-    ## The use statement includes another screen inside this one. The actual
-    ## contents of the main menu are in the navigation screen.
-    # use navigation
+        # add gui.main_menu_background
 
-    # custom menu
-    use pizza
+        ## This empty frame darkens the main menu.
+        # frame:
+        #     style "main_menu_frame"
 
-    if gui.show_name:
+        ## The use statement includes another screen inside this one. The actual
+        ## contents of the main menu are in the navigation screen.
+        # use navigation
 
-        vbox:
-            style "main_menu_vbox"
+        # custom menu
+        use pizza
 
-            text "[config.name!t]":
-                style "main_menu_title"
+        if gui.show_name:
 
-            text "[config.version]":
-                style "main_menu_version"
+            vbox:
+                style "main_menu_vbox"
+
+                text "[config.name!t]":
+                    style "main_menu_title"
+
+                text "[config.version]":
+                    style "main_menu_version"
+        
+        # curtain open left
+        # add Solid("#00f", align=(0.0,0.0), yfill=True, xsize=numbers.screen_width) at widthToZero
 
 
 
