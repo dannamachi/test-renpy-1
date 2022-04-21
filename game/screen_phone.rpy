@@ -7,5 +7,10 @@ screen magic_phone():
         imagemap:
             ground pinkscreen
             hotspot (0, 0, 200, 100):
-                # child screenshot
                 action Return()
+
+        add screenshot:
+            xpos 0
+            ypos 0
+            xsize 200
+            ysize 100
