@@ -4,6 +4,7 @@
 # name of the character.
 
 define e = Character("Eileen")
+define p = Character("Phone", screen='phone_display')
 
 # game flow
 default gFlow = True
@@ -72,9 +73,10 @@ label start:
         else:
             e "Hmmmmmmmmm... no, this ain't it."
 
-    call screen magic_phone
+    window hide
+    show screen magic_phone
 
-    e "And that's it !"
+    p "Wow"
 
     # This ends the game.
     return
