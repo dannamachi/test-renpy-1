@@ -8,7 +8,8 @@ define phone = Character("Phone", screen='phone_display')
 
 init python:
     def p(what, **kwargs):
-        gamedata.addToList(phone, what)
+        if gamedata.isSendingToPhone():
+            gamedata.addToList(phone, what)
         phone(what, **kwargs)
 
 # game flow
@@ -78,7 +79,7 @@ label start:
         else:
             e "Hmmmmmmmmm... no, this ain't it."
 
-    window hide
+    # window hide Dissolve(1.0)
     show screen magic_phone
 
     p "Wow"
@@ -86,9 +87,22 @@ label start:
     p "I see now..."
 
     $ gamedata.setHidePhoneDisplay()
+    $ gamedata.setSendToPhone(True)
 
     p "This is going straight to the phone"
     p "So cool isn't it !?"
 
+    # calling some label
+    call some_scene
+
     # This ends the game.
     return
+
+label some_scene:
+    $ gamedata.setHidePhoneDisplay(False)
+    p "Eh ?"
+    p "Right."
+
+    $ gamedata.setSendToPhone()
+    p "This won't go to phone."
+    p "Brilliant."

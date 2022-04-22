@@ -209,7 +209,9 @@ init -10 python:
             ]
             self.name = 'Hahahah'
             self.phones = []
+
             self.hide_phone_display = False
+            self.send_to_phone = False
 
         def addToList(self, who, what):
             for item in self.phones:
@@ -229,3 +231,9 @@ init -10 python:
 
         def setHidePhoneDisplay(self, isHide=True):
             self.hide_phone_display = isHide
+
+        def isSendingToPhone(self):
+            return self.send_to_phone
+
+        def setSendToPhone(self, isSend=False):
+            self.send_to_phone = isSend
