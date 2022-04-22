@@ -10,6 +10,12 @@ style phone_frame_imagemap:
     xfill True
     yfill True
 
+style icon_phone:
+    xalign 0.9
+    yalign 0.2
+    xsize 150
+    ysize 150
+
 style pizza_button:
     background Solid("fff", xfill=True, yfill=True)
     size_group 'pizza'
@@ -26,8 +32,11 @@ transform widthToZero:
     linear 3.0 xsize 0
 
 transform showFadeIn:
-    alpha 0.0
-    linear 0.5 alpha 1.0
+    on show:
+        alpha 0.0
+        linear 0.5 alpha 1.0
+    on hide:
+        linear 0.5 alpha 0.0
 
 transform pizza_button_1:
     #rotate_pad False

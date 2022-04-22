@@ -82,6 +82,9 @@ label start:
     # window hide Dissolve(1.0)
     show screen magic_phone
 
+    # show button to toggle show/hide phone
+    show screen phone_icon
+
     p "Wow"
     p "This is pretty cool ngl."
     p "I see now..."

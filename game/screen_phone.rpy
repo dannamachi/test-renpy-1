@@ -1,6 +1,8 @@
 screen magic_phone():
     style_prefix "phone"
 
+    tag phone_case
+
     # show top
     zorder 10
 
@@ -37,3 +39,9 @@ screen phone_display(who, what):
     ## phone variant - there's no room.
     # if not renpy.variant("small"):
     #     add SideImage() xalign 0.0 yalign 1.0
+
+screen phone_icon():
+    button:
+        style 'icon_phone'
+        background pinkscreen
+        action Function(togglePhoneDisplay)
