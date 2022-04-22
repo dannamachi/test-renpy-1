@@ -27,8 +27,10 @@ screen phone_display(who, what):
     # show topper
     zorder 20
 
-    text who id "who"
-    text what id "what"
+    frame:
+        at invisible
+        text who id "who"
+        text what id "what"
 
     ## If there's a side image, display it above the text. Do not display on the
     ## phone variant - there's no room.

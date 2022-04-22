@@ -18,6 +18,9 @@ style pizza_button_text:
     line_spacing 2
     underline True
 
+transform invisible:
+    alpha 0.0
+
 transform widthToZero:
     xsize numbers.screen_width
     linear 3.0 xsize 0
