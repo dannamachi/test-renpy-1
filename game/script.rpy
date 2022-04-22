@@ -77,6 +77,8 @@ label start:
     show screen magic_phone
 
     p "Wow"
+    p "This is pretty cool ngl."
+    p "I see now..."
 
     # This ends the game.
     return

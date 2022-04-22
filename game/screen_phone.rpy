@@ -18,6 +18,10 @@ screen magic_phone():
             ypos numbers.button_1[1]
             xsize numbers.button_1[2]
             ysize numbers.button_1[3]
+        
+        for i, item in enumerate(gamedata.getList()):
+            text item['who'] ypos (300 + i*30) xpos 0
+            text item['what'] ypos (300 + i*30) xpos 70
 
 screen phone_display(who, what):
     # show topper

@@ -208,3 +208,17 @@ init -10 python:
                 }
             ]
             self.name = 'Hahahah'
+            self.phones = []
+
+        def addToList(self, who, what):
+            for item in self.phones:
+                if item['who'] == who:
+                    return
+
+            self.phones.append({
+                'who': who,
+                'what': what
+            })
+
+        def getList(self):
+            return self.phones
