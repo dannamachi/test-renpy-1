@@ -27,8 +27,9 @@ screen phone_display(who, what):
     # show topper
     zorder 20
 
-    frame:
-        at invisible
+    fixed:
+        if gamedata.isHidingPhoneDisplay():
+            at invisible
         text who id "who"
         text what id "what"
 

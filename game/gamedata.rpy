@@ -209,6 +209,7 @@ init -10 python:
             ]
             self.name = 'Hahahah'
             self.phones = []
+            self.hide_phone_display = False
 
         def addToList(self, who, what):
             for item in self.phones:
@@ -222,3 +223,9 @@ init -10 python:
 
         def getList(self):
             return self.phones
+
+        def isHidingPhoneDisplay(self):
+            return self.hide_phone_display
+
+        def setHidePhoneDisplay(self, isHide=True):
+            self.hide_phone_display = isHide

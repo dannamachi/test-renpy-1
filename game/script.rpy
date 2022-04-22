@@ -85,5 +85,10 @@ label start:
     p "This is pretty cool ngl."
     p "I see now..."
 
+    $ gamedata.setHidePhoneDisplay()
+
+    p "This is going straight to the phone"
+    p "So cool isn't it !?"
+
     # This ends the game.
     return
