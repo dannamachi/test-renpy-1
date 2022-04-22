@@ -20,7 +20,7 @@ screen magic_phone():
             ysize numbers.button_1[3]
         
         for i, item in enumerate(gamedata.getList()):
-            text item['who'] ypos (300 + i*30) xpos 0
+            text item['who'].name ypos (300 + i*30) xpos 0
             text item['what'] ypos (300 + i*30) xpos 70
 
 screen phone_display(who, what):

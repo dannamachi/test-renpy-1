@@ -212,7 +212,7 @@ init -10 python:
 
         def addToList(self, who, what):
             for item in self.phones:
-                if item['who'] == who:
+                if item['who'] == what and item.name == who.name:
                     return
 
             self.phones.append({

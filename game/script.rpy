@@ -4,7 +4,12 @@
 # name of the character.
 
 define e = Character("Eileen")
-define p = Character("Phone", screen='phone_display')
+define phone = Character("Phone", screen='phone_display')
+
+init python:
+    def p(what, **kwargs):
+        gamedata.addToList(phone, what)
+        phone(what, **kwargs)
 
 # game flow
 default gFlow = True
