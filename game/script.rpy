@@ -105,6 +105,23 @@ label some_scene:
     $ gamedata.setHidePhoneDisplay(False)
     p "Eh ?"
     p "Right."
+    $ gamedata.setHidePhoneDisplay(True)
+    p "Message here."
+    p "Another message here."
+    p "Message grouping to be done later."
+    p "This is to test scrolling and overflow."
+    p "I hope i don't have to do the 4-piece cropping plan if possible."
+    p "Cool as it is, i think it might be a bit too much eh."
+    p "Haiz, it do be hard when things are conveniently modularized but you don't know how it all works."
+    p "Testing text wrapping as well."
+    p "Is this long enough already ?"
+    p "Let's write a bit more."
+    p "Man i'm not hungry actually, but it's already evening time."
+    p "Haiyai, mendokusai..."
+    p "Mmmmmmm what should i do ?"
+    p "Is this enough for you i wonder ?"
+    p "Bruh wouldn't it be funny--"
+    p "I think it's enough already teh."
 
     $ gamedata.setSendToPhone()
     p "This won't go to phone."
