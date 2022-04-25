@@ -6,6 +6,8 @@ screen magic_phone():
     # show top
     zorder 10
 
+    predict False
+
     frame:
         at showFadeIn
         id 'phone'
@@ -22,18 +24,16 @@ screen magic_phone():
             ysize numbers.button_1[3]
 
         python:
-            linesList = []
-            for item in gamedata.getList():
-                lineList = divide_into_lines(item['what'], 25)
-                for segment in lineList:
-                    linesList.append({
-                        'who'  : item['who'],
-                        'what' : segment
-                    })
+            yadj = ui.adjustment()
 
         vpgrid:
+            yadjustment yadj
+            python:
+                if yadj.value == yadj.range:
+                    yadj.value = float('inf')
             cols 1
-            yinitial 0.0
+            yinitial 1.0
+            # ysize 2000
 
             scrollbars "vertical"
             mousewheel True
@@ -44,7 +44,7 @@ screen magic_phone():
 
             # style_prefix "history"
 
-            for item in linesList:
+            for item in gamedata.getChatLines():
 
                 window:
 
@@ -61,8 +61,9 @@ screen magic_phone():
                     text item['what']:
                         substitute False
 
-            if len(linesList) == 0:
+            if gamedata.getChatCount() == 0: # mbe change this to reduce iter time on large chat list ?
                 label 'No text message, say something ?'
+        
         
         # for i, item in enumerate(linesList):
         #     text item['who'].name ypos (100 + i*30) xpos 0

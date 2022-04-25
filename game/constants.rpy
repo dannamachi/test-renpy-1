@@ -22,6 +22,7 @@ init -5 python:
 
     numbers.button_1 = (0, 0, 200, 100)
 
+init -15 python:
     def togglePhoneDisplay():
         if (renpy.get_screen('magic_phone')): # name
             renpy.hide_screen('phone_case') # tag

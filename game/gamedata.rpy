@@ -223,8 +223,19 @@ init -10 python:
                 'what': what
             })
 
-        def getList(self):
-            return self.phones
+        def getChatLines(self):
+            linesList = []
+            for item in self.phones:
+                lineList = divide_into_lines(item['what'], 25)
+                for segment in lineList:
+                    linesList.append({
+                        'who'  : item['who'],
+                        'what' : segment
+                    })
+            return linesList
+
+        def getChatCount(self):
+            return len(self.phones)
 
         def isHidingPhoneDisplay(self):
             return self.hide_phone_display
