@@ -43,20 +43,27 @@ screen magic_phone():
             side_yfill True
 
             # style_prefix "history"
+            $ lines = gamedata.getChatLines()
 
-            for item in gamedata.getChatLines():
+            for i, item in enumerate(lines):
 
                 window:
+                    if i + 1 == len(lines):
+                        at transform:
+                            alpha 0.0
+                            linear 0.3 alpha 1.0
 
                     ## This lays things out properly if history_height is None.
                     has fixed:
                         yfit True
 
                     if item['who']:
-
-                        label item['who'].name:
-                            style "history_name"
-                            substitute False
+                        if i > 0 and lines[i-1]['who'] == item['who']:
+                            pass
+                        else:
+                            label item['who'].name:
+                                style "history_name"
+                                substitute False
 
                     text item['what']:
                         substitute False

@@ -5,12 +5,18 @@
 
 define e = Character("Eileen")
 define phone = Character("Phone", screen='phone_display')
+define phone2 = Character("Not Phone", screen='phone_display')
 
 init python:
     def p(what, **kwargs):
         if gamedata.isSendingToPhone():
             gamedata.addToList(phone, what)
         phone(what, **kwargs)
+
+    def p2(what, **kwargs):
+        if gamedata.isSendingToPhone():
+            gamedata.addToList(phone2, what)
+        phone2(what, **kwargs)
 
 # game flow
 default gFlow = True
@@ -108,20 +114,20 @@ label some_scene:
     $ gamedata.setHidePhoneDisplay(True)
     p "Message here."
     p "Another message here."
-    p "Message grouping to be done later."
-    p "This is to test scrolling and overflow."
+    p2 "Message grouping to be done later."
+    p2 "This is to test scrolling and overflow."
     p "I hope i don't have to do the 4-piece cropping plan if possible."
-    p "Cool as it is, i think it might be a bit too much eh."
+    p2 "Cool as it is, i think it might be a bit too much eh."
     p "Haiz, it do be hard when things are conveniently modularized but you don't know how it all works."
-    p "Testing text wrapping as well."
+    p2 "Testing text wrapping as well."
     p "Is this long enough already ?"
     p "Let's write a bit more."
     p "Man i'm not hungry actually, but it's already evening time."
-    p "Haiyai, mendokusai..."
+    p2 "Haiyai, mendokusai..."
     p "Mmmmmmm what should i do ?"
     p "Is this enough for you i wonder ?"
     p "Bruh wouldn't it be funny--"
-    p "I think it's enough already teh."
+    p2 "I think it's enough already teh."
 
     $ gamedata.setSendToPhone()
     p "This won't go to phone."
