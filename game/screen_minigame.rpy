@@ -3,13 +3,17 @@ screen minigame():
     ## This ensures that any other menu screen is replaced.
     tag minigame
 
-    ## This empty frame darkens the main menu.
-    frame:
-        style "minigame_frame"
+    style_prefix 'minigame'
 
-    # cud
-    default pong = ClassicAnimator(assets.anima_1_right)
-    add pong
+    ## Frame for background and all static displayables
+    frame:
+        # cud
+        default pong = ClassicAnimator(assets.anima_1_right)
+        add pong
+        
+        fixed:
+            text 'Hello' xpos 400 # for testing
+            add 'eye blinking'
 
     # add images.player xalign 0.0 yalign 0.0
 

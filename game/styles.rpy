@@ -1,6 +1,10 @@
 style minigame_frame:
     background 'images/backgrounds/minigame.png'
 
+style minigame_fixed:
+    xpos 300
+    ypos 500
+
 style phone_frame:
     align (0.5, 0.4)
     xsize numbers.phone_width
