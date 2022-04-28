@@ -24,6 +24,10 @@ style pizza_button_text:
     line_spacing 2
     underline True
 
+style chat_window:
+    xfill True
+    ysize None
+
 transform invisible:
     alpha 0.0
 

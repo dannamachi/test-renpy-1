@@ -26,12 +26,12 @@ screen magic_phone():
         python:
             yadj = ui.adjustment()
 
-        vpgrid:
+        viewport:
             yadjustment yadj
             python:
                 if yadj.value == yadj.range:
                     yadj.value = float('inf')
-            cols 1
+            # cols 1 (for vpgrid)
             yinitial 1.0
             # ysize 2000
 
@@ -45,28 +45,30 @@ screen magic_phone():
             # style_prefix "history"
             $ lines = gamedata.getChatLines()
 
-            for i, item in enumerate(lines):
+            vbox: # for viewport
+                for i, item in enumerate(lines):
 
-                window:
-                    if i + 1 == len(lines):
-                        at transform:
-                            alpha 0.0
-                            linear 0.3 alpha 1.0
+                    window:
+                        style 'chat_window'
+                        if i + 1 == len(lines):
+                            at transform:
+                                alpha 0.0
+                                linear 0.3 alpha 1.0
 
-                    ## This lays things out properly if history_height is None.
-                    has fixed:
-                        yfit True
+                        ## This lays things out properly if history_height is None.
+                        has fixed:
+                            yfit True
 
-                    if item['who']:
-                        if i > 0 and lines[i-1]['who'] == item['who']:
-                            pass
-                        else:
-                            label item['who'].name:
-                                style "history_name"
-                                substitute False
+                        if item['who']:
+                            if i > 0 and lines[i-1]['who'] == item['who']:
+                                pass
+                            else:
+                                label item['who'].name:
+                                    style "history_name"
+                                    substitute False
 
-                    text item['what']:
-                        substitute False
+                        text item['what']:
+                            substitute False
 
             if gamedata.getChatCount() == 0: # mbe change this to reduce iter time on large chat list ?
                 label 'No text message, say something ?'
