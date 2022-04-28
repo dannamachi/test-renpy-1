@@ -218,11 +218,19 @@ init -10 python:
                 if item['who'] == what and item.name == who.name:
                     return
 
+            chat_count = self.getChatCount()
+
             self.phones.append({
                 'who': who,
                 'what': what,
-                'show': False
+                'show': False,
+                'index': chat_count
             })
+
+        def updateShowByIndex(self, chatIndex):
+            for item in self.phones:
+                if item['index'] == chatIndex:
+                    item['show'] = True
 
         def getChatLines(self):
             linesList = []

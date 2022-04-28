@@ -50,30 +50,35 @@ screen magic_phone():
 
                     window:
                         style 'cwin'
-                        if i + 1 == len(lines):
+                        if i + 1 == len(lines) and not item['show']:
+                            # update show by index
                             at transform:
                                 alpha 0.0
                                 linear 0.3 alpha 1.0
+                            $ gamedata.updateShowByIndex(item['index'])
 
                         ## This lays things out properly if history_height is None.
-                        has fixed:
+                        # has fixed:
+                        #     yfit True
+
+                        fixed:
                             yfit True
 
-                        if item['who']:
-                            if i > 0 and lines[i-1]['who'] == item['who']:
-                                $ hasName = False
-                            else:
-                                $ hasName = True
-                                label item['who'].name:
-                                    style "chat_name"
-                                    substitute False
+                            if item['who']:
+                                if i > 0 and lines[i-1]['who'] == item['who']:
+                                    $ hasName = False
+                                else:
+                                    $ hasName = True
+                                    label item['who'].name:
+                                        style "chat_name"
+                                        substitute False
 
-                        text item['what']:
-                            if hasName:
-                                style "chat_text"
-                            else:
-                                style "chat_text2"
-                            substitute False
+                            text item['what']:
+                                if hasName:
+                                    style "chat_text"
+                                else:
+                                    style "chat_text2"
+                                substitute False
 
             if gamedata.getChatCount() == 0: # mbe change this to reduce iter time on large chat list ?
                 label 'No text message, say something ?'
