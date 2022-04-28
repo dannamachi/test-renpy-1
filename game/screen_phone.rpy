@@ -61,13 +61,18 @@ screen magic_phone():
 
                         if item['who']:
                             if i > 0 and lines[i-1]['who'] == item['who']:
-                                pass
+                                $ hasName = False
                             else:
+                                $ hasName = True
                                 label item['who'].name:
-                                    style "history_name"
+                                    style "chat_name"
                                     substitute False
 
                         text item['what']:
+                            if hasName:
+                                style "chat_text"
+                            else:
+                                style "chat_text2"
                             substitute False
 
             if gamedata.getChatCount() == 0: # mbe change this to reduce iter time on large chat list ?

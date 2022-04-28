@@ -28,6 +28,22 @@ style chat_window:
     xfill True
     ysize None
 
+style chat_name:
+    xpos 50
+    xanchor 0.0 #1.0
+    ypos 20
+
+style chat_name_text:
+    bold True
+
+style chat_text:
+    ypos 60
+    xanchor 0.0
+
+style chat_text2:
+    ypos 20
+    xanchor 0.0
+
 transform invisible:
     alpha 0.0
 

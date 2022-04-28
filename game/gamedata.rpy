@@ -220,7 +220,8 @@ init -10 python:
 
             self.phones.append({
                 'who': who,
-                'what': what
+                'what': what,
+                'show': False
             })
 
         def getChatLines(self):
@@ -230,15 +231,16 @@ init -10 python:
             for i in range(chat_count):
                 # from latest message
                 item = self.phones[chat_count - 1 - i] 
-                lineList = divide_into_lines(item['what'], 25)
-                # reverse segment as well... hmmmmm
-                lineList.reverse()
-                for segment in lineList:
-                    linesList.append({
-                        'who'  : item['who'],
-                        'what' : segment
-                    })
-                chat_limit_count += len(lineList)
+                # lineList = divide_into_lines(item['what'], 25) # old shizzle
+                # lineList.reverse()
+                # for segment in lineList:
+                #     linesList.append({
+                #         'who'  : item['who'],
+                #         'what' : segment
+                #     })
+                linesList.append(item)
+                # chat_limit_count += len(lineList)
+                chat_limit_count += 1
                 if chat_limit_count >= numbers.chat_show:
                     break
             # reverse so show from top to bottom (mbe some way to do this in renscript ?)
