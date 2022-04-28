@@ -20,6 +20,8 @@ init -5 python:
     numbers.phone_width = 350
     numbers.phone_height = 600
 
+    numbers.chat_show = 10
+
     numbers.button_1 = (0, 0, 200, 100)
 
 init -15 python:
