@@ -49,7 +49,7 @@ screen magic_phone():
                 for i, item in enumerate(lines):
 
                     window:
-                        style 'chat_window'
+                        style 'cwin'
                         if i + 1 == len(lines):
                             at transform:
                                 alpha 0.0

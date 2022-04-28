@@ -24,9 +24,13 @@ style pizza_button_text:
     line_spacing 2
     underline True
 
-style chat_window:
+style cwin:
     xfill True
     ysize None
+    bottom_padding 20
+    left_padding 10
+    right_padding 10
+    background Image("images/interfaces/chatbox.png", xalign=0.5, yalign=1.0)
 
 style chat_name:
     xpos 50
