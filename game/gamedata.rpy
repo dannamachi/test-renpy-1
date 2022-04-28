@@ -61,11 +61,13 @@ init -10 python:
             return Image(self.animaLoop[self.a_index])
 
         def visit(self):
-            return [ self.ball, self.getAnima() ]
+            return [ self.getAnima() ]
 
         # Recomputes the position of the ball, handles bounces, and
         # draws the screen.
         def render(self, width, height, st, at):
+
+            import math
 
             # The Render object we'll be drawing into.
             r = renpy.Render(width, height)
@@ -113,20 +115,50 @@ init -10 python:
                 self.bdy = -self.bdy
 
             # Draw the ball.
-            ball = renpy.render(self.ball, width, height, st, at)
-            r.blit(ball, (int(self.bx - self.BALL_WIDTH / 2),
-                            int(self.by - self.BALL_HEIGHT / 2)))
+            # ball = renpy.render(self.ball, width, height, st, at)
+            # r.blit(ball, (int(self.bx - self.BALL_WIDTH / 2),
+            #                 int(self.by - self.BALL_HEIGHT / 2)))
 
             # draw the anima
             anima = renpy.render(self.getAnima(), width, height, st, at)
             r.blit(anima, (self.posx, self.posy))
 
             # move the anima
-            for direc in self.isMoving:
-                if direc == 'left':
-                    self.posx -= self.moveSpeed * dtime
-                elif direc == 'right':
-                    self.posx += self.moveSpeed * dtime
+            norVal = self.moveSpeed * dtime
+            sinVal = norVal / math.sqrt(2)
+
+            if 'left' in self.isMoving:
+                if 'up' in self.isMoving or 'down' in self.isMoving:
+                    self.posx -= sinVal
+                else:
+                    self.posx -= norVal
+            if 'right' in self.isMoving:
+                if 'up' in self.isMoving or 'down' in self.isMoving:
+                    self.posx += sinVal
+                else:
+                    self.posx += norVal
+            if 'up' in self.isMoving:
+                if 'left' in self.isMoving or 'right' in self.isMoving:
+                    self.posy -= sinVal
+                else:
+                    self.posy -= norVal
+            if 'down' in self.isMoving:
+                if 'left' in self.isMoving or 'right' in self.isMoving:
+                    self.posy += sinVal
+                else:
+                    self.posy += norVal
+
+
+            # move the anima
+            # for direc in self.isMoving:
+            #     if direc == 'left':
+            #         self.posx -= self.moveSpeed * dtime
+            #     elif direc == 'right':
+            #         self.posx += self.moveSpeed * dtime
+            #     elif direc == 'up':
+            #         self.posy -= self.moveSpeed * dtime
+            #     elif direc == 'down':
+            #         self.posy += self.moveSpeed * dtime
                 
 
             # # Check for a winner.
@@ -173,6 +205,16 @@ init -10 python:
                     if not 'right' in self.isMoving:
                         self.isMoving.append('right')
                     renpy.restart_interaction()
+                # moving up
+                elif ev.key == pygame.K_UP:
+                    if not 'up' in self.isMoving:
+                        self.isMoving.append('up')
+                    renpy.restart_interaction()
+                # moving down
+                elif ev.key == pygame.K_DOWN:
+                    if not 'down' in self.isMoving:
+                        self.isMoving.append('down')
+                    renpy.restart_interaction()
             # not moving
             elif ev.type == pygame.KEYUP:
                 # release left
@@ -184,6 +226,16 @@ init -10 python:
                 elif ev.key == pygame.K_RIGHT:
                     if 'right' in self.isMoving:
                         self.isMoving.remove('right')
+                    renpy.restart_interaction()
+                # release up
+                elif ev.key == pygame.K_UP:
+                    if 'up' in self.isMoving:
+                        self.isMoving.remove('up')
+                    renpy.restart_interaction()
+                # release down
+                elif ev.key == pygame.K_DOWN:
+                    if 'down' in self.isMoving:
+                        self.isMoving.remove('down')
                     renpy.restart_interaction()
 
             raise renpy.IgnoreEvent()
