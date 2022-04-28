@@ -85,6 +85,9 @@ label start:
         else:
             e "Hmmmmmmmmm... no, this ain't it."
 
+    # blinking test
+    show eye blinking at topleft
+
     # window hide Dissolve(1.0)
     show screen magic_phone
 
